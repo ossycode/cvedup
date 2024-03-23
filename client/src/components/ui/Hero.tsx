@@ -19,7 +19,7 @@ const HeroHomePage = () => {
       </p>
 
       <Link
-        href={"/"}
+        href={"/getting-started"}
         className="mt-6 px-4 py-3 border font-FannGrotesqueProMid bg-azure rounded-lg
          hover:text-slate-50 hover:bg-yaleBlue transition-all duration-300  ease-in-out"
       >
