@@ -33,6 +33,12 @@ export const cvSlice = createSlice({
     setSummary: (state, action: PayloadAction<CvData["summary"]>) => {
       state.summary = action.payload;
     },
+    setCertifications: (
+      state,
+      action: PayloadAction<CvData["certifications"][0]>
+    ) => {
+      state.certifications = [...(state.certifications || []), action.payload];
+    },
   },
 });
 

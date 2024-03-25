@@ -25,6 +25,7 @@ const config: Config = {
         azure: "#3A86FF",
         conflowerBlue: "#4C91FF",
         yaleBlue: "#002F7A",
+        customGreen: "rgb(0, 211, 131)",
       },
     },
   },

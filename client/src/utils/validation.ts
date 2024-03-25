@@ -85,6 +85,13 @@ export const cvDataSchema = z.object({
   photo: z.string().optional(),
   language: z.array(z.string()).optional(),
   summary: z.string().min(1, { message: "Summary must not be empty" }),
+  certifications: z.array(
+    z.object({
+      certName: z.string(),
+      certIssueOrganisation: z.string(),
+      certDate: z.string(),
+    })
+  ),
 });
 
 export type CvData = z.infer<typeof cvDataSchema>;

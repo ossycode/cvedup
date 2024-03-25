@@ -10,9 +10,12 @@ import WorkHistoryForm from "./forms/WorkHistoryForm";
 import ReferencesForm from "./forms/ReferencesForm";
 import SummaryForm from "./forms/SummaryForm";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import CustomButton from "./ui/CustomButton";
 import CustomMotionComponent from "./ui/CustomMotionComponent";
+import NextIcon from "./icons/NextIcon";
+import PreviousIcon from "./icons/PreviousIcon";
+import ProgressBar from "./ui/ProgressBar";
+import CertificationsForm from "./forms/CertificationsForm";
 
 const Step = ({ params }: { params: { step: string } }) => {
   const router = useRouter();
@@ -24,12 +27,13 @@ const Step = ({ params }: { params: { step: string } }) => {
     "personal-information": (
       <PersonalInfoForm validateForm={validateForm} formRef={formRef} />
     ),
+    photo: <PhotoForm validateForm={validateForm} formRef={formRef} />,
+    summary: <SummaryForm />,
     education: <EducationForm />,
-    photo: <PhotoForm />,
-    language: <LanguageForm />,
     skills: <SkillsForm />,
     "work-history": <WorkHistoryForm />,
-    summary: <SummaryForm />,
+    language: <LanguageForm />,
+    certifications: <CertificationsForm />,
     references: <ReferencesForm />,
   };
 
@@ -66,6 +70,7 @@ const Step = ({ params }: { params: { step: string } }) => {
 
   return (
     <div className="relative h-full grow flex flex-col">
+      <ProgressBar steps={stepKeys.length} currentStep={currentStepIndex} />
       <CustomMotionComponent
         stepKeys={stepKeys}
         currentStepIndex={currentStepIndex}
@@ -78,21 +83,23 @@ const Step = ({ params }: { params: { step: string } }) => {
         <CustomButton
           onClick={goToPreviousStep}
           disabled={currentStepIndex === 0}
-          className={` px-28  text-xl shadow-lg bg-transparent border-conflowerBlue ${
+          className={`flex items-center jus gap-4  px-28  text-xl shadow-lg bg-transparent border-conflowerBlue ${
             currentStepIndex === 0 && "hidden"
           }`}
         >
+          <PreviousIcon />
           Back
         </CustomButton>
 
         <CustomButton
           onClick={goToNextStep}
           disabled={!isFormValid}
-          className={` text-xl rounded-lg shadow-lg ${
+          className={` text-xl rounded-lg shadow-lg flex items-center jus gap-4 ${
             currentStepIndex === 0 ? "px-44" : "px-28"
           }`}
         >
           Next
+          <NextIcon />
         </CustomButton>
       </footer>
     </div>

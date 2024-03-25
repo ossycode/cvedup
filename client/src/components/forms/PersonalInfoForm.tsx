@@ -8,13 +8,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CvData, cvDataSchema } from "@/utils/validation";
 import { useAppDispatch, useAppSelector } from "@/lib/reduxHooks";
 import { setPersonalInformation } from "@/features/cv/cvSlice";
+import { FormProps } from "@/utils/interface";
+import CustomFormSection from "../ui/CustomFormSection";
 
-interface Props {
-  validateForm: (value: boolean) => void;
-  formRef: React.RefObject<HTMLFormElement>;
-}
-
-const PersonalInfoForm = ({ validateForm, formRef }: Props) => {
+const PersonalInfoForm = ({ validateForm, formRef }: FormProps) => {
   const dispatch = useAppDispatch();
   const selectCvData = useAppSelector((state) => state.cv.personalInformation);
 
@@ -23,7 +20,6 @@ const PersonalInfoForm = ({ validateForm, formRef }: Props) => {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors, isValid },
   } = useForm<CvData["personalInformation"]>({
     resolver: zodResolver(personalInfoSchema),
@@ -43,17 +39,9 @@ const PersonalInfoForm = ({ validateForm, formRef }: Props) => {
     },
   });
 
-  const watchedFields = watch();
-
-  const handleValueChange = (value: string, name: string) => {
-    setValue(name as keyof CvData["personalInformation"], value);
-  };
-
   useEffect(() => {
     validateForm(isValid);
-
-    // console.log(watchedFields);
-  }, [isValid, validateForm, watchedFields]);
+  }, [isValid, validateForm]);
 
   const formData = [
     {
@@ -115,7 +103,7 @@ const PersonalInfoForm = ({ validateForm, formRef }: Props) => {
   };
 
   return (
-    <section className="h-full flex-grow p-8 w-full pb-28">
+    <CustomFormSection>
       <CustomHeading> Tell Us About Yourself</CustomHeading>
       <CustomParagraph>
         {" "}
@@ -148,7 +136,7 @@ const PersonalInfoForm = ({ validateForm, formRef }: Props) => {
           value={selectCvData?.address?.country}
         />
       </form>
-    </section>
+    </CustomFormSection>
   );
 };
 
