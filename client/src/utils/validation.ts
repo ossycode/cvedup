@@ -84,7 +84,9 @@ export const cvDataSchema = z.object({
   ),
   photo: z.string().optional(),
   language: z.array(z.string()).optional(),
-  summary: z.string().min(1, { message: "Summary must not be empty" }),
+  summary: z
+    .string()
+    .min(10, { message: "Summary must be a minimum of 10 characters" }),
   certifications: z.array(
     z.object({
       certName: z.string(),
