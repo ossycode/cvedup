@@ -29,7 +29,7 @@ const Step = ({ params }: { params: { step: string } }) => {
     ),
     photo: <PhotoForm validateForm={validateForm} formRef={formRef} />,
     summary: <SummaryForm validateForm={validateForm} formRef={formRef} />,
-    education: <EducationForm />,
+    education: <EducationForm validateForm={validateForm} formRef={formRef} />,
     skills: <SkillsForm />,
     "work-history": <WorkHistoryForm />,
     language: <LanguageForm />,

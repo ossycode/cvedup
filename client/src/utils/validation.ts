@@ -1,6 +1,79 @@
-import { z } from "zod";
+import { z, ZodError } from "zod";
 
 const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im;
+
+export const educationObject = z
+  .object({
+    schoolName: z.string().min(1, { message: "School name must not be empty" }),
+    areaOfStudy: z
+      .string()
+      .min(1, { message: "Area of study must not be empty" }),
+    schoolLocation: z
+      .string()
+      .min(1, { message: "School location must not be empty" }),
+    qualification: z
+      .string()
+      .min(1, { message: "Qualification must not be empty" }),
+    honours: z.string().optional(),
+    startDate: z
+      .union([
+        z.string().min(1, { message: "Please select a start date" }),
+        z.date({
+          required_error: "Please select a start date",
+          invalid_type_error: "Invalid date!",
+        }),
+      ])
+      .refine(
+        (value) => {
+          if (
+            value instanceof Date ||
+            (typeof value === "string" && value.trim() !== "")
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        {
+          message: "Please select a start date",
+        }
+      ),
+    endDate: z
+      .union([
+        z.string().min(1, { message: "Please select an end date" }),
+        z.date({
+          required_error: "Please select an end date",
+          invalid_type_error: "Invalid date!",
+        }),
+      ])
+      .refine(
+        (value) => {
+          // Check if the value is a valid date or a non-empty string
+          if (
+            value instanceof Date ||
+            (typeof value === "string" && value.trim() !== "")
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        {
+          message: "Field must be a valid date or a non-empty string",
+        }
+      ),
+  })
+  .superRefine(({ startDate, endDate }, ctx) => {
+    if (endDate instanceof Date) {
+      if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "End date must be after start date",
+          path: ["endDate"],
+        });
+      }
+    }
+  });
 
 export const cvDataSchema = z.object({
   personalInformation: z
@@ -37,22 +110,8 @@ export const cvDataSchema = z.object({
         message: "Input must be less than 50 characters",
       }
     ),
-  education: z.array(
-    z.object({
-      schoolName: z
-        .string()
-        .min(1, { message: "School name must not be empty" }),
-      areaOfStudy: z
-        .string()
-        .min(1, { message: "Area of study must not be empty" }),
-      qualification: z.string().min(1, {
-        message: "Qualification must not be empty",
-      }),
-      startDate: z.string().min(1, { message: "Start date must not be empty" }),
-      endDate: z.string().min(1, { message: "End date must not be empty" }),
-      honours: z.string().optional(),
-    })
-  ),
+
+  education: z.array(educationObject),
   workExperience: z.array(
     z.object({
       employerName: z.string().min(1, {

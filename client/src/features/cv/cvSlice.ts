@@ -15,6 +15,11 @@ export const cvSlice = createSlice({
     addEducation: (state, action: PayloadAction<CvData["education"][0]>) => {
       state.education = [...(state.education || []), action.payload];
     },
+    deleteEducation: (state, action: PayloadAction<number>) => {
+      state.education = state.education.filter(
+        (_, index: number) => index !== action.payload
+      );
+    },
     addWorkExperience: (
       state,
       action: PayloadAction<CvData["workExperience"][0]>
@@ -45,6 +50,7 @@ export const cvSlice = createSlice({
 export const {
   setPersonalInformation,
   addEducation,
+  deleteEducation,
   addWorkExperience,
   addReference,
   setPhoto,

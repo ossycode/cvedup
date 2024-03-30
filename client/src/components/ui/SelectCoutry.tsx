@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/CustomSelect";
+} from "@/components/lib/SelectSetup";
 import { countriesList } from "@/utils/constants";
 import { FieldError } from "react-hook-form";
 

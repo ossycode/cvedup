@@ -19,7 +19,7 @@ const InputRow = forwardRef<HTMLInputElement, InputRowProps>(function InputRow(
         className="py-4 px-4 block border  border-gray-500  text-sm focus:border-yaleBlue focus:ring-yaleBlue focus:outline-none w-full "
       />
       <span
-        className={`text-red-500 mt-1 text-sm block transition-all duration-300 ease-in-out shrink-0 min-h-5 ${
+        className={`text-red-500 mt-1 text-xs block transition-all duration-300 ease-in-out shrink-0 min-h-8 ${
           error ? "opacity-100" : "invisible opacity-0"
         }`}
       >
