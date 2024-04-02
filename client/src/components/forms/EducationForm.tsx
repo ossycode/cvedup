@@ -10,10 +10,13 @@ import CustomButton from "../ui/CustomButton";
 import { useAppSelector } from "@/lib/reduxHooks";
 import AddEducationForm from "./AddEducationForm";
 import AddedEducationList from "../ui/AddedEducationList";
+import CustomListDiv from "../ui/CustomListDiv";
 
 const EducationForm = ({ validateForm }: FormProps) => {
   const selectCvData = useAppSelector((state) => state.cv.education);
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = React.useState(
+    selectCvData?.length < 1 || selectCvData === undefined
+  );
 
   const toggleForm = useCallback(
     (value: boolean) => {
@@ -44,23 +47,28 @@ const EducationForm = ({ validateForm }: FormProps) => {
         Add your educational background here. Include details such as your
         degrees, diplomas, certificates, and any relevant achievements. This
         section is an opportunity to showcase your academic accomplishments and
-        highlight your qualifications to potential employers.
+        highlight your qualifications to potential employers
       </CustomParagraph>
 
       <AddEducationForm isOpen={show} toggleForm={toggleForm} />
 
       {selectCvData?.length > 0 && (
-        <div className="bg-gray-100 p-4 flex flex-col gap-3 rounded-md shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-          {!show && (
-            <CustomButton
-              className="self-end px-4 py-2 hover:bg-azure/60"
-              onClick={() => setShow(!show)}
-            >
-              Add More
-            </CustomButton>
-          )}
+        <CustomListDiv>
+          <div className="flex justify-between">
+            <h3 className=" text-lg font-FannGrotesqueProMid">
+              Education history summary
+            </h3>
+            {!show && (
+              <CustomButton
+                className="self-end px-4 py-2 hover:bg-azure/60"
+                onClick={() => setShow(!show)}
+              >
+                Add More
+              </CustomButton>
+            )}
+          </div>
           <AddedEducationList />
-        </div>
+        </CustomListDiv>
       )}
     </CustomFormSection>
   );

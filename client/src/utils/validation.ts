@@ -75,6 +75,76 @@ export const educationObject = z
     }
   });
 
+export const workExperienceObject = z
+  .object({
+    employerName: z.string().min(1, {
+      message: "Employer name must not be empty",
+    }),
+    jobTitle: z.string().min(1, { message: "Job title must not be empty" }),
+    location: z.string().optional(),
+    duties: z
+      .array(z.string())
+      .nonempty({ message: "The duties must not be empty" }),
+    // .min(1, { message: "The Job details must not be empty" }),
+    startDate: z
+      .union([
+        z.string().min(1, { message: "Please select a start date" }),
+        z.date({
+          required_error: "Please select a start date",
+          invalid_type_error: "Invalid date!",
+        }),
+      ])
+      .refine(
+        (value) => {
+          if (
+            value instanceof Date ||
+            (typeof value === "string" && value.trim() !== "")
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        {
+          message: "Please select a start date",
+        }
+      ),
+    endDate: z
+      .union([
+        z.string().min(1, { message: "Please select an end date" }),
+        z.date({
+          required_error: "Please select an end date",
+          invalid_type_error: "Invalid date!",
+        }),
+      ])
+      .refine(
+        (value) => {
+          if (
+            value instanceof Date ||
+            (typeof value === "string" && value.trim() !== "")
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        {
+          message: "Field must be a valid date or a non-empty string",
+        }
+      ),
+  })
+  .superRefine(({ startDate, endDate }, ctx) => {
+    if (endDate instanceof Date) {
+      if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "End date must be after start date",
+          path: ["endDate"],
+        });
+      }
+    }
+  });
+
 export const cvDataSchema = z.object({
   personalInformation: z
     .object({
@@ -112,19 +182,10 @@ export const cvDataSchema = z.object({
     ),
 
   education: z.array(educationObject),
-  workExperience: z.array(
-    z.object({
-      employerName: z.string().min(1, {
-        message: "Employer name must not be empty",
-      }),
-      jobTitle: z.string().min(1, { message: "Job title must not be empty" }),
-      duties: z
-        .array(z.string())
-        .min(1, { message: "Duties must not be empty" }),
-      startDate: z.string().min(1, { message: "Start date must not be empty" }),
-      endDate: z.string().min(1, { message: "End date must not be empty" }),
-    })
-  ),
+  workExperience: z.array(workExperienceObject),
+  skills: z
+    .array(z.string().min(1))
+    .min(1, { message: "Please add at least one skill" }),
   references: z.array(
     z.object({
       referenceName: z.string().min(1, {

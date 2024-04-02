@@ -26,6 +26,12 @@ export const cvSlice = createSlice({
     ) => {
       state.workExperience = [...(state.workExperience || []), action.payload];
     },
+
+    deleteWorkExperience: (state, action: PayloadAction<number>) => {
+      state.workExperience = state.workExperience.filter(
+        (_, index: number) => index !== action.payload
+      );
+    },
     addReference: (state, action: PayloadAction<CvData["references"][0]>) => {
       state.references = [...(state.references || []), action.payload];
     },
@@ -37,6 +43,13 @@ export const cvSlice = createSlice({
     },
     setSummary: (state, action: PayloadAction<CvData["summary"]>) => {
       state.summary = action.payload;
+    },
+
+    addSkill: (state, action: PayloadAction<CvData["skills"][0]>) => {
+      state.skills = [...(state.skills || []), action.payload];
+    },
+    removeSkill: (state, action: PayloadAction<CvData["skills"][0]>) => {
+      state.skills = state.skills.filter((skill) => skill !== action.payload);
     },
     setCertifications: (
       state,
@@ -52,6 +65,7 @@ export const {
   addEducation,
   deleteEducation,
   addWorkExperience,
+  deleteWorkExperience,
   addReference,
   setPhoto,
   setLanguage,

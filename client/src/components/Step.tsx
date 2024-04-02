@@ -30,10 +30,12 @@ const Step = ({ params }: { params: { step: string } }) => {
     photo: <PhotoForm validateForm={validateForm} formRef={formRef} />,
     summary: <SummaryForm validateForm={validateForm} formRef={formRef} />,
     education: <EducationForm validateForm={validateForm} formRef={formRef} />,
+    "work-history": (
+      <WorkHistoryForm validateForm={validateForm} formRef={formRef} />
+    ),
     skills: <SkillsForm />,
-    "work-history": <WorkHistoryForm />,
-    language: <LanguageForm />,
     certifications: <CertificationsForm />,
+    language: <LanguageForm />,
     references: <ReferencesForm />,
   };
 
