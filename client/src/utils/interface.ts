@@ -7,3 +7,8 @@ export interface DateDetails {
   month: number;
   year: number;
 }
+
+export interface DraggableItem {
+  id: string;
+  text: string;
+}

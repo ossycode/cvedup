@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import CancelIcon from "../icons/RemoveIcon";
 import DragAndDropIcon from "../icons/DragAndDropIcon";
+import { getItemStyle } from "@/utils/dragableItemHelpers";
 
 interface Props {
   toggleForm: (value: boolean) => void;
@@ -126,7 +127,6 @@ const AddWorkExperienceForm = ({ toggleForm, isOpen }: Props) => {
 
     dispatch(addWorkExperience(serializedData));
     setWorkExperiencesList((prev) => [...prev, serializedData]);
-    console.log(serializedData);
 
     setIsCurrentlyWorking(false);
     reset();
@@ -200,15 +200,6 @@ const AddWorkExperienceForm = ({ toggleForm, isOpen }: Props) => {
     // },
   ];
 
-  const grid = 10;
-
-  const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
-    userSelect: "none",
-    padding: grid,
-    background: isDragging && "gray",
-    ...draggableStyle,
-  });
-
   return (
     <motion.form
       className="  mt-4 items-center gap-x-6 gap-y-4 mx-auto max-w-3xl pt-5 pb-12 relative"
@@ -280,7 +271,7 @@ const AddWorkExperienceForm = ({ toggleForm, isOpen }: Props) => {
         />
       </div>
 
-      <div className="flex flex-col items-center bg-gray-200 min-h-60 h-auto rounded-md my-4">
+      <div className="flex flex-col items-center bg-gray-200 min-h-60 h-full rounded-md my-4">
         <div className="grid grid-cols-[60% auto] flex-grow h-full w-full ">
           <div className="w-full h-full p-4 flex flex-col gap-3 ">
             <h2 className="text-sm font-FannGrotesquePro">
@@ -312,10 +303,10 @@ const AddWorkExperienceForm = ({ toggleForm, isOpen }: Props) => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                style={getItemStyle(
-                                  snapshot.isDragging,
-                                  provided.draggableProps.style
-                                )}
+                                // style={getItemStyle(
+                                //   snapshot.isDragging,
+                                //   provided.draggableProps.style
+                                // )}
                               >
                                 <DragAndDropIcon />
                                 <label

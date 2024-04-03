@@ -45,17 +45,22 @@ export const cvSlice = createSlice({
       state.summary = action.payload;
     },
 
-    addSkill: (state, action: PayloadAction<CvData["skills"][0]>) => {
-      state.skills = [...(state.skills || []), action.payload];
+    addSkill: (state, action: PayloadAction<CvData["skills"]>) => {
+      state.skills = state.skills = action.payload;
     },
     removeSkill: (state, action: PayloadAction<CvData["skills"][0]>) => {
       state.skills = state.skills.filter((skill) => skill !== action.payload);
     },
-    setCertifications: (
+    AddCertification: (
       state,
       action: PayloadAction<CvData["certifications"][0]>
     ) => {
       state.certifications = [...(state.certifications || []), action.payload];
+    },
+    deleteCertification: (state, action: PayloadAction<number>) => {
+      state.certifications = state.certifications.filter(
+        (_, index: number) => index !== action.payload
+      );
     },
   },
 });
@@ -67,9 +72,13 @@ export const {
   addWorkExperience,
   deleteWorkExperience,
   addReference,
+  addSkill,
+  removeSkill,
   setPhoto,
   setLanguage,
   setSummary,
+  AddCertification,
+  deleteCertification,
 } = cvSlice.actions;
 
 export default cvSlice.reducer;

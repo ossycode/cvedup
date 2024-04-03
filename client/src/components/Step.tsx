@@ -33,8 +33,10 @@ const Step = ({ params }: { params: { step: string } }) => {
     "work-history": (
       <WorkHistoryForm validateForm={validateForm} formRef={formRef} />
     ),
-    skills: <SkillsForm />,
-    certifications: <CertificationsForm />,
+    skills: <SkillsForm validateForm={validateForm} formRef={formRef} />,
+    certifications: (
+      <CertificationsForm validateForm={validateForm} formRef={formRef} />
+    ),
     language: <LanguageForm />,
     references: <ReferencesForm />,
   };

@@ -145,6 +145,38 @@ export const workExperienceObject = z
     }
   });
 
+export const certificationObject = z.object({
+  certName: z
+    .string()
+    .min(1, { message: "Certification name must not be empty" }),
+  certIssueOrganisation: z
+    .string()
+    .min(1, { message: "Issue organisation must not be empty" }),
+  certDate: z
+    .union([
+      z.string().min(1, { message: "Please select a certification date" }),
+      z.date({
+        required_error: "Please select a start date",
+        invalid_type_error: "Invalid date!",
+      }),
+    ])
+    .refine(
+      (value) => {
+        if (
+          value instanceof Date ||
+          (typeof value === "string" && value.trim() !== "")
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      {
+        message: "Please select a certification date",
+      }
+    ),
+});
+
 export const cvDataSchema = z.object({
   personalInformation: z
     .object({
@@ -207,13 +239,7 @@ export const cvDataSchema = z.object({
   summary: z
     .string()
     .min(10, { message: "Summary must be a minimum of 10 characters" }),
-  certifications: z.array(
-    z.object({
-      certName: z.string(),
-      certIssueOrganisation: z.string(),
-      certDate: z.string(),
-    })
-  ),
+  certifications: z.array(certificationObject),
 });
 
 export type CvData = z.infer<typeof cvDataSchema>;
