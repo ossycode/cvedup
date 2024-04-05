@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
-        <body>
+      <html lang="en" suppressHydrationWarning={true}>
+        <body suppressHydrationWarning={true}>
           {/* className={inter.className} */}
           <Header />
           {children}

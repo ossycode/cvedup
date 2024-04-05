@@ -37,7 +37,7 @@ const Step = ({ params }: { params: { step: string } }) => {
     certifications: (
       <CertificationsForm validateForm={validateForm} formRef={formRef} />
     ),
-    language: <LanguageForm />,
+    language: <LanguageForm validateForm={validateForm} formRef={formRef} />,
     references: <ReferencesForm />,
   };
 
