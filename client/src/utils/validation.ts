@@ -177,6 +177,21 @@ export const certificationObject = z.object({
     ),
 });
 
+export const referencesObject = z.object({
+  referenceName: z.string().min(1, {
+    message: "Reference name must not be empty",
+  }),
+  referenceJobTitle: z.string().optional(),
+  referenceCompanyName: z.string().optional(),
+  referenceEmail: z
+    .string()
+    .email({ message: "Provide a valid email address" })
+    .min(1, { message: "Email must not be empty" }),
+  referencePhoneNumber: z.string().refine((phone) => phoneRegex.test(phone), {
+    message: "Phone number is not valid",
+  }),
+});
+
 export const cvDataSchema = z.object({
   personalInformation: z
     .object({
@@ -218,22 +233,7 @@ export const cvDataSchema = z.object({
   skills: z
     .array(z.string().min(1))
     .min(1, { message: "Please add at least one skill" }),
-  references: z.array(
-    z.object({
-      referenceName: z.string().min(1, {
-        message: "Reference name must not be empty",
-      }),
-      referenceJobTitle: z.string().min(1, {
-        message: "Reference job title must not be empty",
-      }),
-      referenceEmail: z.string().min(1, {
-        message: "Reference email must not be empty",
-      }),
-      referencePhoneNumber: z.string().min(1, {
-        message: "Reference phone number must not be empty",
-      }),
-    })
-  ),
+  references: z.array(referencesObject),
   photo: z.string().optional(),
   language: z.array(z.string()).optional(),
   summary: z

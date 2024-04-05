@@ -468,3 +468,22 @@ export const primaryLanguagesList = [
   "Hindi",
   "Urdu",
 ];
+
+export const toggleFormVariant = {
+  open: {
+    height: "auto",
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  closed: {
+    height: 0,
+    opacity: 0,
+    y: "-100%",
+    transition: {
+      duration: 0.7,
+    },
+  },
+};

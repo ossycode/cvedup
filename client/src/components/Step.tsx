@@ -16,6 +16,7 @@ import NextIcon from "./icons/NextIcon";
 import PreviousIcon from "./icons/PreviousIcon";
 import ProgressBar from "./ui/ProgressBar";
 import CertificationsForm from "./forms/CertificationsForm";
+import ReviewForm from "./forms/ReviewForm";
 
 const Step = ({ params }: { params: { step: string } }) => {
   const router = useRouter();
@@ -38,7 +39,10 @@ const Step = ({ params }: { params: { step: string } }) => {
       <CertificationsForm validateForm={validateForm} formRef={formRef} />
     ),
     language: <LanguageForm validateForm={validateForm} formRef={formRef} />,
-    references: <ReferencesForm />,
+    references: (
+      <ReferencesForm validateForm={validateForm} formRef={formRef} />
+    ),
+    review: <ReviewForm />,
   };
 
   const stepKeys = Object.keys(steps);

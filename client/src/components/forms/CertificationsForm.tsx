@@ -16,6 +16,7 @@ import CustomButton from "../ui/CustomButton";
 import { AddCertification } from "@/features/cv/cvSlice";
 import AddedCertificationList from "../ui/AddedCertificationList";
 import CustomListDiv from "../ui/CustomListDiv";
+import { toggleFormVariant } from "@/utils/constants";
 
 const CertificationsForm = ({ validateForm, formRef }: FormProps) => {
   const dispatch = useAppDispatch();
@@ -68,25 +69,6 @@ const CertificationsForm = ({ validateForm, formRef }: FormProps) => {
     mode: "onTouched",
   });
 
-  const variants = {
-    open: {
-      height: "auto",
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    closed: {
-      height: 0,
-      opacity: 0,
-      y: "-100%",
-      transition: {
-        duration: 0.7,
-      },
-    },
-  };
-
   const formFields = [
     {
       label: "Certification Name",
@@ -119,7 +101,6 @@ const CertificationsForm = ({ validateForm, formRef }: FormProps) => {
 
     dispatch(AddCertification(serializedData));
     reset();
-    // setIsAddingCertification("no");
     toggleForm(false);
   };
 
@@ -157,7 +138,7 @@ const CertificationsForm = ({ validateForm, formRef }: FormProps) => {
       </div>
       <motion.form
         className=" mt-4 items-center gap-x-6 gap-y-4 mx-auto max-w-3xl pt-5 pb-12 relative"
-        variants={variants}
+        variants={toggleFormVariant}
         animate={show ? "open" : "closed"}
         style={{ overflow: "hidden" }}
         onSubmit={handleSubmit(onSubmit)}

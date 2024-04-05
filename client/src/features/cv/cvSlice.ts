@@ -35,6 +35,11 @@ export const cvSlice = createSlice({
     addReference: (state, action: PayloadAction<CvData["references"][0]>) => {
       state.references = [...(state.references || []), action.payload];
     },
+    deleteReference: (state, action: PayloadAction<number>) => {
+      state.references = state.references.filter(
+        (_, index: number) => index !== action.payload
+      );
+    },
     setPhoto: (state, action: PayloadAction<CvData["photo"]>) => {
       state.photo = action.payload;
     },
@@ -79,6 +84,7 @@ export const {
   setSummary,
   AddCertification,
   deleteCertification,
+  deleteReference,
 } = cvSlice.actions;
 
 export default cvSlice.reducer;
