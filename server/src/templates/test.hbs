@@ -1,0 +1,78 @@
+{{! @media print { .container { width: 21cm; height: 29.7cm;
+      margin: 0 auto; padding: 1cm; /* Adjust padding as needed */
+      page-break-inside: avoid; /* Avoid breaking within elements */ } .page {
+      page-break-after: always; /* Force page break after each page */ } } }}
+
+{{! width: 21cm; height: 29.7cm; }}
+
+{{! height: 29.7cm }}
+
+{{! html { -webkit-print-color-adjust: exact; } * { margin: 0; padding: 0;
+      box-sizing: border-box;} body { background: rgb(204,204,204); width: 21cm;
+      margin: 0 auto; font-family: 'Blinker', sans-serif; } .container {
+      display: flex; flex-direction: row; width: 100%; min-height: 100vh}
+      .leftPanel { width: 27%; background-color: #405544; padding: 0.7cm;
+      display: flex; flex-direction: column; align-items: center; } .rightPanel
+      { width: 73%; padding: 0.7cm; } page { background: white; display: block;
+      margin: 0 auto; margin-bottom: 0.5cm; position: relative; }
+      page[size="A4"] { width: 21cm; } @page { size: 21cm 29.7cm; padding: 0;
+      margin: 0mm; border: none; } img { width: 4cm; height: 4cm; margin-bottom:
+      0.7cm; object-fit: cover; object-position: 50% 50%; } .user-name { color:
+      #405544;font-weight: semibold; font-size: 1.2cm; border-bottom: black 6px
+      solid; padding-bottom: 5px; font-family: 'Blinker', sans-serif;}
+      .section-title-right{font-weight: bolder; text-transform: uppercase;
+      font-size: 0.4cm; color: black; margin-top: 1cm; margin-bottom: 0.2cm;}
+      .text{ color: #353c44; font-size: 0.3cm; } .with-line{ border-top: 1px
+      solid black; margin-top: 0.8cm; } .section-details{ display: flex;
+      justify-content: space-between;} .job-title, .job-company,
+      .education-title, .education-school { font-weight: bold; color: black; }
+      .job-title{margin-bottom: 0.07cm;} .job-description{ margin-top: 0.3cm;
+      padding-left: 0.3cm;} .job-description li { list-style-type: disc;
+      margin-bottom: 0.1cm; } .job-item, .education-item { display: flex;
+      flex-direction: column; gap: 0.2cm;} .leftPanel { background-color:
+      #405544; } .education-details{ display: flex; align-items: center;}
+      .p-left-small {padding-left: 2px;} .p-right-small {padding-right: 2px;}
+      page:last-of-type .leftPanel, page:last-of-type .rightPanel { min-height:
+      29.7cm; } @media print { page:last-of-type .leftPanel, page:last-of-type
+      .rightPanel { min-height: 29.7cm; } } }}
+
+{{! 
+       html { -webkit-print-color-adjust: exact; } * { margin: 0; padding: 0;
+      box-sizing: border-box;} body { background: rgb(204,204,204); width: 21cm;
+      height: 29.7cm; margin: 0 auto; font-family: 'Blinker', sans-serif; }
+      .container { display: flex; flex-direction: row; width: 100%; height:
+      100%; overflow: auto;} .leftPanel { width: 27%; background-color: #405544;
+      padding: 0.7cm; display: flex; flex-direction: column; align-items:
+      center; } .rightPanel { width: 73%; padding: 0.7cm; } page { background:
+      white; display: block; margin: 0 auto; margin-bottom: 0.5cm; position:
+      relative; } page[size="A4"] { width: 21cm; height: 29.7cm; overflow:
+      visible; } @page { size: 21cm 29.7cm; padding: 0; margin: 0mm; border:
+      none; } img { width: 4cm; height: 4cm; margin-bottom: 0.7cm; object-fit:
+      cover; object-position: 50% 50%; } .user-name { color:
+      #405544;font-weight: semibold; font-size: 1.2cm; border-bottom: black 6px
+      solid; padding-bottom: 5px; font-family: 'Blinker', sans-serif;}
+      .section-title-right{font-weight: bolder; text-transform: uppercase;
+      font-size: 0.4cm; color: black; margin-top: 1cm; margin-bottom: 0.2cm;}
+      .text{ color: #353c44; font-size: 0.3cm; } .with-line{ border-top: 1px
+      solid black; margin-top: 0.8cm; } .section-details{ display: flex;
+      justify-content: space-between;} .job-title, .job-company,
+      .education-title, .education-school { font-weight: bold; color: black; }
+      .job-title{margin-bottom: 0.07cm;} .job-description{ margin-top: 0.3cm;
+      padding-left: 0.3cm;} .job-description li { list-style-type: disc;
+      margin-bottom: 0.1cm; } .job-item, .education-item { display: flex;
+      flex-direction: column; gap: 0.2cm;} .leftPanel { background-color:
+      #405544; } .education-details{ display: flex; align-items: center;}
+      .p-left-small {padding-left: 2px;} .p-right-small {padding-right: 2px;}
+      page:last-of-type .leftPanel, page:last-of-type .rightPanel { min-height:
+      29.7cm; } @media print { page:last-of-type .leftPanel, page:last-of-type
+      .rightPanel { min-height: 29.7cm; } } }}
+
+{{! @media print { body{overflow:
+      hidden;} .container{overflow: auto;} page:last-of-type .leftPanel,
+      page:last-of-type .rightPanel { min-height: 29.7cm; } } @media print { /*
+      Specify page size */ @page { size: A4; margin: 0; height: 29.7cm; } /* Add
+      page break after each page */ page { page-break-after: always; min-height:
+      29.7cm; background-color: chartreuse;} /* Hide overflowing content on
+      additional pages */ page:last-of-type { overflow: hidden; } } }}
+
+{{! rgb(204,204,204) }}

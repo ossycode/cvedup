@@ -1,0 +1,27 @@
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "123-456-7890",
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "school": "University of Somewhere",
+      "year": "2022"
+    }
+  ],
+  "work": [
+    {
+      "position": "Software Developer",
+      "company": "Tech Innovations Inc.",
+      "startYear": "2022",
+      "endYear": "Present",
+      "responsibilities": [
+        "Developing and maintaining web applications",
+        "Collaborating with the design team to implement new features",
+        "Writing clean, efficient, and documented code"
+      ]
+    }
+  ],
+  "skills": ["JavaScript", "React", "Node.js", "HTML/CSS"]
+}

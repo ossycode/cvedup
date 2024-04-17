@@ -1,3 +1,8 @@
 {
-  "cSpell.words": ["reduxjs"]
+  "dotnetAcquisitionExtension.existingDotnetPath": [
+    {
+      "extensionId": "msazuretools.azurerm-vscode-tools",
+      "path": "/usr/local/share/dotnet/dotnet"
+    }
+  ]
 }

@@ -1,0 +1,455 @@
+<html>
+  <head>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Blinker&display=swap"
+    />
+
+    <title>{{name}}'s CV</title>
+
+    <style>
+      html { -webkit-print-color-adjust: exact; } * { margin: 0; padding: 0;
+      box-sizing: border-box; } body { width: 21cm; margin: 0 auto; font-family:
+      'Blinker', sans-serif; background: rgb(204,204,204) } .container {
+      display: flex; flex-direction: row; width: 100%; } .leftPanel { width:
+      27%; background-color: #405544; padding: 0.7cm; display: flex;
+      flex-direction: column; align-items: center; } .rightPanel { width: 73%;
+      padding: 0.7cm; } page { background: white; display: block; margin: 0
+      auto; margin-bottom: 0.5cm; position: relative; } page[size="A4"] { width:
+      21cm; } @page { size: 21cm 29.7cm; padding: 0; margin: 0mm; border: none;
+      } img { width: 4cm; height: 4cm; margin-bottom: 0.7cm; object-fit: cover;
+      object-position: 50% 50%; } .user-name { color: #405544; font-weight:
+      semibold; font-size: 1.2cm; border-bottom: black 6px solid;
+      padding-bottom: 5px; font-family: 'Blinker', sans-serif; }
+      .section-title-right { font-weight: bolder; text-transform: uppercase;
+      font-size: 0.4cm; color: black; margin-top: 1cm; margin-bottom: 0.2cm; }
+      .text { color: #353c44; font-size: 0.3cm; } .with-line { border-top: 1px
+      solid black; margin-top: 0.8cm; } .section-details { display: flex;
+      justify-content: space-between; } .job-title, .job-company,
+      .education-title, .education-school { font-weight: bold; color: black; }
+      .job-title { margin-bottom: 0.07cm; } .job-description { margin-top:
+      0.3cm; padding-left: 0.3cm; } .job-description li { list-style-type: disc;
+      margin-bottom: 0.1cm; } .job-item, .education-item { display: flex;
+      flex-direction: column; gap: 0.2cm; } .education-details { display: flex;
+      align-items: center; } .p-left-small { padding-left: 2px; } .p-right-small
+      { padding-right: 2px; } page:last-of-type .leftPanel, page:last-of-type
+      .rightPanel { min-height: 29.7cm; } @media print { /* Specify page size */
+      @page { size: A4; margin: 0; height: 29.7cm; } /* Add page break after
+      each page */ page { page-break-after: always; min-height: 29.7cm; /*
+      Change background color as needed */ display: block; } /* Hide overflowing
+      content on additional pages */ page:last-of-type { position: relative; }
+      /* Adjust leftPanel and rightPanel to have minimum height of 29.7cm */
+      page .leftPanel, page .rightPanel { min-height: 29.7cm; } /* Adjust the
+      height of the last page to fill the remaining space */
+      page:last-of-type::after { content: ""; display: block; position:
+      absolute; bottom: 0; left: 0; width: 100%; /* Same as page background
+      color */ } }
+    </style>
+
+  </head>
+  {{!-- <body>
+    <main size="A4">
+
+    <div class="section">
+      <h1 class="item name">{{name}}</h1>
+      <p class="item">Email: {{email}}</div>
+      <p class="item">Phone: {{phone}}</p>
+      <p></p>
+
+
+      <div class="section-title"></div>
+
+      <div>{{summary}}</div>
+
+      
+    </div>
+
+    <div class="section">
+      <div class="section-title">Education</div>
+      {{#each education}}
+        <div class="item">
+          <div class="item-title">{{this.degree}}, {{this.field}}</div>
+          <div>{{this.school}}, {{this.year}}</div>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="section">
+      <div class="section-title">Work Experience</div>
+      {{#each work}}
+        <div class="item">
+          <div class="item-title">{{this.position}}, {{this.company}}</div>
+          <div>{{this.startYear}} - {{this.endYear}}</div>
+          <ul>
+            {{#each this.responsibilities}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills</div>
+      <ul>
+        {{#each skills}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    </main>
+  </body> --}}
+
+  <body>
+    <page size="A4">
+      <div class="container">
+        <div class="leftPanel">
+          <img
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+          />
+          <div class="details">
+            <div class="item bottomLineSeparator">
+              <h2>
+                CONTACT
+              </h2>
+              <div class="smallText">
+                <p>
+                  <i class="fa fa-phone contactIcon" aria-hidden="true"></i>
+                  (+33) 777 777 77
+                </p>
+                <p>
+                  <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
+                  <a href="lorem@ipsum.com@gmail.com">
+                    lorem@ipsum.com
+                  </a>
+                </p>
+                <p>
+                  <i
+                    class="fa fa-map-marker contactIcon"
+                    aria-hidden="true"
+                  ></i>
+                  New York, USA
+                </p>
+                <p>
+                  <i
+                    class="fa fa-linkedin-square contactIcon"
+                    aria-hidden="true"
+                  ></i>
+                  <a href="#">
+                    in/loremipsum
+                  </a>
+                </p>
+                <p class="lastParagrafNoMarginBottom">
+                  <i class="fa fa-skype contactIcon" aria-hidden="true"></i>
+                  <a href="#">
+                    loremipsum
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="item bottomLineSeparator">
+              <h2>
+                SKILLS
+              </h2>
+            </div>
+            <div class="item">
+              <h2>
+                EDUCATION
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="rightPanel">
+          <section>
+            <h1 class="user-name">
+              John Doe
+            </h1>
+          </section>
+
+          <section>
+            <h1 class="section-title-right">Professional Summary</h1>
+            <p class="text">Practical, highly skilled individual demonstrating
+              out-of-the-box thinking. Optimises cost-effective operations and
+              improves safety by scrutinising existing practices. Proven success
+              fulfilling complex project briefs on-time and under budget.</p>
+
+          </section>
+
+          <section>
+            <h1 class="section-title-right with-line">Work history</h1>
+
+            <div class="job-item">
+              <div>
+                <div class="section-details">
+                  <div>
+                    <p class="job-title text">Software engineer</p>
+                    <p class="text"><span class="job-company">Google</span>
+                      <span>- Longcot, Oxford</span></p>
+                  </div>
+
+                  <p class="text"><span>04/2022</span>
+                    -
+                    <span>10/2024</span></p>
+
+                </div>
+
+                <ul class="job-description text">
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+
+                </ul>
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <div>
+                    <p class="job-title text">Software engineer</p>
+                    <p class="text"><span class="job-company">Google</span>
+                      <span>- Longcot, Oxford</span></p>
+                  </div>
+
+                  <p class="text"><span>04/2022</span>
+                    -
+                    <span>10/2024</span></p>
+
+                </div>
+
+                <ul class="job-description text">
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+
+                </ul>
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <div>
+                    <p class="job-title text">Software engineer</p>
+                    <p class="text"><span class="job-company">Google</span>
+                      <span>- Longcot, Oxford</span></p>
+                  </div>
+
+                  <p class="text"><span>04/2022</span>
+                    -
+                    <span>10/2024</span></p>
+
+                </div>
+
+                <ul class="job-description text">
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+
+                </ul>
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <div>
+                    <p class="job-title text">Software engineer</p>
+                    <p class="text"><span class="job-company">Google</span>
+                      <span>- Longcot, Oxford</span></p>
+                  </div>
+
+                  <p class="text"><span>04/2022</span>
+                    -
+                    <span>10/2024</span></p>
+
+                </div>
+
+                <ul class="job-description text">
+                  <li>Maintained project momentum by providing detailed progress
+                    reports and milestone updates to key stakeholders.
+                  </li>
+                  <li>
+                    Implemented software performance monitoring tools,
+                    identifying and resolving bottlenecks.
+                  </li>
+                  <li>
+                    Oversaw new feature updates to existing software systems to
+                    add functionality.</li>
+
+                </ul>
+              </div>
+            </div>
+
+          </section>
+
+          <section>
+            <h1 class="section-title-right with-line">Education</h1>
+            <div class="education-item">
+              <div>
+                <div class="section-details">
+                  <p class="text education-title">Bachelors of Science,
+                    <span class="text">Computer Science</span></p>
+                  <p class="text"><span>02/2022</span>
+                    -
+                    <span>10/2024</span></p>
+                </div>
+                <div class="education-details">
+                  <p class="education-school text p-right-small">University of
+                    Oxford</p>
+                  -
+                  <p class="text p-left-small p-right-small">Logincot, Oxford</p>
+                  -
+                  <p class="text p-left-small">Merit</p>
+
+                </div>
+
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <p class="text education-title">Bachelors of Science,
+                    <span class="text">Computer Science</span></p>
+                  <p class="text"><span>02/2022</span>
+                    -
+                    <span>10/2024</span></p>
+                </div>
+                <div class="education-details">
+                  <p class="education-school text p-right-small">University of
+                    Oxford</p>
+                  -
+                  <p class="text p-left-small p-right-small">Logincot, Oxford</p>
+                  -
+                  <p class="text p-left-small">Merit</p>
+
+                </div>
+
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <p class="text education-title">Bachelors of Science,
+                    <span class="text">Computer Science</span></p>
+                  <p class="text"><span>02/2022</span>
+                    -
+                    <span>10/2024</span></p>
+                </div>
+                <div class="education-details">
+                  <p class="education-school text p-right-small">University of
+                    Oxford</p>
+                  -
+                  <p class="text p-left-small p-right-small">Logincot, Oxford</p>
+                  -
+                  <p class="text p-left-small">Merit</p>
+
+                </div>
+
+              </div>
+
+              <div>
+                <div class="section-details">
+                  <p class="text education-title">Bachelors of Science,
+                    <span class="text">Computer Science</span></p>
+                  <p class="text"><span>02/2022</span>
+                    -
+                    <span>10/2024</span></p>
+                </div>
+                <div class="education-details">
+                  <p class="education-school text p-right-small">University of
+                    Oxford</p>
+                  -
+                  <p class="text p-left-small p-right-small">Logincot, Oxford</p>
+                  -
+                  <p class="text p-left-small">Merit</p>
+
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+    </page>
+    {{! <page size="A4">
+      <div class="container">
+        <div class="leftPanel">
+        </div>
+        <div class="rightPanel">
+        </div>
+      </div>
+
+    </page> }}
+    {{! <page size="A4">
+      <div class="container">
+        <div class="leftPanel">
+        </div>
+        <div class="rightPanel">
+        </div>
+      </div>
+
+    </page>  }}
+
+  </body>
+</html>

@@ -19,6 +19,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { addReference } from "@/features/cv/cvSlice";
 import AddedReferenceList from "../ui/AddedReferenceList";
 
+// npm install -D @types/express typescript ts-node
+
 const ReferencesForm = ({ validateForm, formRef }: FormProps) => {
   const dispatch = useAppDispatch();
   const referencesStoreData = useAppSelector((state) => state.cv.references);

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Tqndayyp/a8QH/AAD+kniUPcpMojsVxnImvtt2+MTLNX3sST4yiYQlbygIF2Q+Ah7aaxuktjSOeHvbGElTnowQ==",
+  "success": true,
+  "projectFilePath": "/Users/ossylab/dev/personalProjects/cvedup/backend/webapi/webapi.csproj",
+  "expectedPackageFiles": [
+    "/Users/ossylab/.nuget/packages/handlebars.net/2.1.6/handlebars.net.2.1.6.nupkg.sha512",
+    "/Users/ossylab/.nuget/packages/rotativa.aspnetcore/1.3.2/rotativa.aspnetcore.1.3.2.nupkg.sha512"
+  ],
+  "logs": []
+}
