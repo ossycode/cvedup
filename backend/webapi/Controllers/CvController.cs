@@ -61,7 +61,7 @@ public class CvController : ControllerBase
                 skills = new[] { "JavaScript", "React", "Node.js", "HTML/CSS" },
             };
 
-      var htmlContent =   _handlebarsHelper.RenderTemplate("Template1", data);
+      var htmlContent =   _handlebarsHelper.RenderTemplate("Template2", data);
 
       var converter = new BasicConverter(new PdfTools());
 
@@ -71,7 +71,6 @@ public class CvController : ControllerBase
                     ColorMode = ColorMode.Color,
                     Orientation = Orientation.Portrait,
                     PaperSize = PaperKind.A4,
-                    // Out = 
                 },
                 Objects = {
                     new ObjectSettings()
@@ -82,15 +81,11 @@ public class CvController : ControllerBase
                     }
                 }
             };
-        // var pdf = _pdfConverter.ConvertHtmlToPdf(htmlContent);
-
-        // return Ok();
         byte[] pdfBytes = converter.Convert(doc);
 
           return File(pdfBytes, "application/pdf", "output.pdf");
   }
 
-  // [HttpGet]
   // public IActionResult GeneratePDF()
   //  {
   //    var data = new

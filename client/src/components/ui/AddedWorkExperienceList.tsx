@@ -10,10 +10,6 @@ const AddedWorkExperienceList = () => {
   const selectCvData = useAppSelector((state) => state.cv.workExperience);
   const dispatch = useAppDispatch();
 
-  //   const handleDelete = (index: number) => {
-  //     dispatch(deleteEducation(index));
-  //   };
-
   return (
     <div className="flex flex-col gap-3 ">
       {selectCvData?.map((workExperience, index) => (

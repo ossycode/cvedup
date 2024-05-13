@@ -43,7 +43,7 @@ const data = {
   skills: ["JavaScript", "React", "Node.js", "HTML/CSS"],
 };
 
-const templateSource = fs.readFileSync("./src/templates/template1.hbs", "utf8");
+const templateSource = fs.readFileSync("./src/templates/template2.hbs", "utf8");
 // const templateTest = fs.readFileSync("./src/templates/test.hbs", "utf8");
 
 const template = Handlebars.compile(templateSource);
